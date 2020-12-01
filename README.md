@@ -137,6 +137,7 @@ Currently the module configures two output streams: one for S3 delivery, and ano
 | http\_endpoint\_name | Name of Kinesis Firehose target HTTP endpoint | `string` | `"Observe"` | no |
 | http\_endpoint\_retry\_duration | The total amount of time that Kinesis Data Firehose spends on retries. This duration starts after the initial attempt to send data to the custom destination via HTTPS endpoint fails. It doesn't include the periods during which Kinesis Data Firehose waits for acknowledgment from the specified destination after each attempt. | `number` | `300` | no |
 | http\_endpoint\_s3\_backup\_mode | S3 backup mode for Kinesis Firehose HTTP endpoint | `string` | `"FailedDataOnly"` | no |
+| iam\_name\_prefix | Prefix used for all created IAM roles and policies | `string` | `"observe-kinesis-firehose-"` | no |
 | kinesis\_stream | Kinesis Data Stream ARN to configure as source | `object({ arn = string })` | `null` | no |
 | name | Name of Kinesis Firehose resource | `string` | n/a | yes |
 | observe\_customer | Observe Customer ID | `string` | n/a | yes |

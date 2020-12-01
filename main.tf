@@ -78,8 +78,7 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
 }
 
 resource "aws_iam_role" "firehose" {
-  name_prefix = "kinesis-firehose-role-"
-
+  name_prefix        = var.iam_name_prefix
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -97,7 +96,8 @@ EOF
 }
 
 resource "aws_iam_policy" "firehose_s3" {
-  policy = <<-EOF
+  name_prefix = var.iam_name_prefix
+  policy      = <<-EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -128,7 +128,8 @@ resource "aws_iam_role_policy_attachment" "firehose_s3" {
 }
 
 resource "aws_iam_policy" "put_record" {
-  policy = <<-EOF
+  name_prefix = var.iam_name_prefix
+  policy      = <<-EOF
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -160,7 +161,8 @@ resource "aws_cloudwatch_log_stream" "s3_delivery" {
 }
 
 resource "aws_iam_policy" "firehose_cloudwatch" {
-  count = local.enable_cloudwatch ? 1 : 0
+  name_prefix = var.iam_name_prefix
+  count       = local.enable_cloudwatch ? 1 : 0
 
   policy = <<EOF
 {
@@ -190,7 +192,8 @@ resource "aws_iam_role_policy_attachment" "firehose_cloudwatch" {
 }
 
 resource "aws_iam_policy" "kinesis_firehose" {
-  count = local.enable_kinesis_source ? 1 : 0
+  name_prefix = var.iam_name_prefix
+  count       = local.enable_kinesis_source ? 1 : 0
 
   policy = <<EOF
 {

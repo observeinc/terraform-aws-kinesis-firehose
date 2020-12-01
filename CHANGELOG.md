@@ -8,8 +8,11 @@ All notable changes to this project will be documented in this file.
 
 
 <a name="v0.1.0"></a>
-## v0.1.0 - 2020-11-30
+## v0.1.0 - 2020-12-01
 
+- Add configurable prefix for IAM role and policies
+- Create backup S3 bucket if not provided
+- Conditionally export firehose policy
 - First commit
 
 

@@ -110,6 +110,12 @@ variable "http_endpoint_cloudwatch_log_stream_name" {
   default     = "HttpEndpointDelivery"
 }
 
+variable "iam_name_prefix" {
+  description = "Prefix used for all created IAM roles and policies"
+  type        = string
+  default     = "observe-kinesis-firehose-"
+}
+
 variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)
