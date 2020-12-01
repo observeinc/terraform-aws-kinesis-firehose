@@ -18,6 +18,7 @@ variable "s3_delivery_bucket" {
   type = object({
     arn = string
   })
+  default = null
 }
 
 # Optional input variables

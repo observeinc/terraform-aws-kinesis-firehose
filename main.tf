@@ -4,6 +4,23 @@ locals {
   enable_http_endpoint_logging = local.enable_cloudwatch && var.http_endpoint_cloudwatch_log_stream_name != ""
   enable_kinesis_source        = var.kinesis_stream != null
   access_key                   = format("%s %s", var.observe_customer, var.observe_token)
+  create_s3_bucket             = var.s3_delivery_bucket == null
+  s3_bucket_arn                = local.create_s3_bucket ? aws_s3_bucket.bucket[0].arn : var.s3_delivery_bucket.arn
+}
+
+resource "random_string" "bucket_suffix" {
+  count   = local.create_s3_bucket ? 1 : 0
+  length  = 8
+  upper   = false
+  special = false
+}
+
+resource "aws_s3_bucket" "bucket" {
+  count = local.create_s3_bucket ? 1 : 0
+
+  bucket        = format("%s-%s", var.name, random_string.bucket_suffix[0].result)
+  acl           = "private"
+  force_destroy = true
 }
 
 resource "aws_kinesis_firehose_delivery_stream" "this" {
@@ -12,7 +29,7 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
 
   s3_configuration {
     role_arn   = aws_iam_role.firehose.arn
-    bucket_arn = var.s3_delivery_bucket.arn
+    bucket_arn = local.s3_bucket_arn
 
     buffer_size        = var.s3_delivery_buffer_size
     buffer_interval    = var.s3_delivery_buffer_interval
@@ -96,8 +113,8 @@ resource "aws_iam_policy" "firehose_s3" {
             "s3:PutObject"
         ],
         "Resource": [
-            "${var.s3_delivery_bucket.arn}",
-            "${var.s3_delivery_bucket.arn}/*"
+            "${local.s3_bucket_arn}",
+            "${local.s3_bucket_arn}/*"
         ]
     }
   ]
