@@ -1,4 +1,4 @@
-# AWS VPC Terraform module
+# AWS Kinesis Firehose Terraform module
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/observeinc/terraform-aws-kinesis-firehose)
 
@@ -47,7 +47,7 @@ module "observe_kinesis_firehose" {
 
 ## Configuring Kinesis Data Stream as a source
 
-Tou can specify a Kinesis Data Stream to act as a source to the Kinesis Firehose delivery stream. Only one data stream can be specified, and configuring this option disables all other inputs to your Kinesis Firehose.
+You can specify a Kinesis Data Stream to act as a source to the Kinesis Firehose delivery stream. Only one data stream can be specified, and configuring this option disables all other inputs to your Kinesis Firehose.
 
 ```hcl
 resource "aws_kinesis_stream" "example" {
@@ -70,7 +70,7 @@ For more details, see the Kinesis Data Stream example.
 
 ## Configuring other sources
 
-If you have not specified a Kinesis Data Stream as a source, you are free to configure other sources to put directly to your Kinesis Firehose delivery stream. You can use the module output policy when adding sources:
+If you have not specified a Kinesis Data Stream as a source, you are free to configure other sources to send directly to your Kinesis Firehose delivery stream. You can use the module output policy when adding sources:
 
 ```hcl
 resource "aws_iam_role_policy_attachment" "invoke_firehose" {
