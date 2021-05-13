@@ -7,6 +7,14 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.2.0"></a>
+## [v0.2.0] - 2021-05-13
+
+- Bump pre-commit ([#1](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/1))
+- Add cloudwatch_metrics submodule ([#2](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/2))
+- README fixes
+
+
 <a name="v0.1.0"></a>
 ## v0.1.0 - 2020-12-03
 
@@ -17,4 +25,5 @@ All notable changes to this project will be documented in this file.
 - First commit
 
 
-[Unreleased]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.1.0...v0.2.0
