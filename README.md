@@ -130,8 +130,8 @@ Currently the module configures two output streams: one for S3 delivery, and ano
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | cloudwatch\_log\_group | The CloudWatch group for logging. Providing this value enables logging. | <pre>object({<br>    name = string<br>    arn  = string<br>  })</pre> | `null` | no |
-| http\_endpoint\_buffering\_interval | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `300` | no |
-| http\_endpoint\_buffering\_size | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `5` | no |
+| http\_endpoint\_buffering\_interval | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `60` | no |
+| http\_endpoint\_buffering\_size | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `1` | no |
 | http\_endpoint\_cloudwatch\_log\_stream\_name | Log stream name for HTTP endpoint logs. If empty, log stream will be disabled | `string` | `"HttpEndpointDelivery"` | no |
 | http\_endpoint\_content\_encoding | Kinesis Data Firehose uses the content encoding to compress the body of a request before sending the request to the destination. | `string` | `"GZIP"` | no |
 | http\_endpoint\_name | Name of Kinesis Firehose target HTTP endpoint | `string` | `"Observe"` | no |
