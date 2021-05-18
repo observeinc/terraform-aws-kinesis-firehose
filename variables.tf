@@ -44,13 +44,13 @@ variable "http_endpoint_s3_backup_mode" {
 variable "http_endpoint_buffering_interval" {
   description = "Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination."
   type        = number
-  default     = 300
+  default     = 60
 }
 
 variable "http_endpoint_buffering_size" {
   description = "Buffer incoming data to the specified size, in MiBs, before delivering it to the destination."
   type        = number
-  default     = 5
+  default     = 1
 }
 
 variable "http_endpoint_retry_duration" {
