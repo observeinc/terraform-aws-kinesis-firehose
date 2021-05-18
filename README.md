@@ -114,15 +114,15 @@ Currently the module configures two output streams: one for S3 delivery, and ano
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.21 |
-| aws | >= 2.68 |
+| terraform | >= 0.13 |
+| aws | >= 3.15 |
 | random | >= 3.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.68 |
+| aws | >= 3.15 |
 | random | >= 3.0.0 |
 
 ## Inputs
