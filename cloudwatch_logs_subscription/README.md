@@ -20,9 +20,9 @@ module "observe_kinesis_firehose" {
 }
 
 module "observe_kinesis_firehose_cloudwatch_logs_subscription" {
-  source          = "github.com/observeinc/terraform-aws-kinesis-firehose//cloudwatch_logs_subscription"
-  firehose        = module.observe_kinesis_firehose
-  log_group_names = [
+  source           = "github.com/observeinc/terraform-aws-kinesis-firehose//cloudwatch_logs_subscription"
+  kinesis_firehose = module.observe_kinesis_firehose
+  log_group_names  = [
     aws_cloudwatch_log_group.group.name
   ]
 }
@@ -48,7 +48,7 @@ module "observe_kinesis_firehose_cloudwatch_logs_subscription" {
 |------|-------------|------|---------|:--------:|
 | filter\_name | Filter name | `string` | `"observe-filter"` | no |
 | filter\_pattern | The filter pattern to use. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) | `string` | `""` | no |
-| firehose | Observe Kinesis Firehose module | <pre>object({<br>    firehose_delivery_stream = object({ arn = string })<br>    firehose_iam_policy      = object({ arn = string })<br>  })</pre> | n/a | yes |
+| kinesis\_firehose | Observe Kinesis Firehose module | <pre>object({<br>    firehose_delivery_stream = object({ arn = string })<br>    firehose_iam_policy      = object({ arn = string })<br>  })</pre> | n/a | yes |
 | log\_group\_names | Cloudwatch Log Group names to subscribe to Observe Lambda | `list(string)` | n/a | yes |
 
 ## Outputs

@@ -1,4 +1,4 @@
-variable "firehose" {
+variable "kinesis_firehose" {
   description = "Observe Kinesis Firehose module"
   type = object({
     firehose_delivery_stream = object({ arn = string })
