@@ -33,28 +33,39 @@ module "observe_kinesis_firehose_cloudwatch_logs_subscription" {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.21 |
-| aws | >= 2.68 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.21 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.68 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 2.68 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.32.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_cloudwatch_log_subscription_filter.subscription_filter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_subscription_filter) | resource |
+| [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| filter\_name | Filter name | `string` | `"observe-filter"` | no |
-| filter\_pattern | The filter pattern to use. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) | `string` | `""` | no |
-| kinesis\_firehose | Observe Kinesis Firehose module | <pre>object({<br>    firehose_delivery_stream = object({ arn = string })<br>    firehose_iam_policy      = object({ arn = string })<br>  })</pre> | n/a | yes |
-| log\_group\_names | Cloudwatch Log Group names to subscribe to Observe Lambda | `list(string)` | n/a | yes |
+| <a name="input_filter_name"></a> [filter\_name](#input\_filter\_name) | Filter name | `string` | `"observe-filter"` | no |
+| <a name="input_filter_pattern"></a> [filter\_pattern](#input\_filter\_pattern) | The filter pattern to use. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) | `string` | `""` | no |
+| <a name="input_kinesis_firehose"></a> [kinesis\_firehose](#input\_kinesis\_firehose) | Observe Kinesis Firehose module | <pre>object({<br>    firehose_delivery_stream = object({ arn = string })<br>    firehose_iam_policy      = object({ arn = string })<br>  })</pre> | n/a | yes |
+| <a name="input_log_group_names"></a> [log\_group\_names](#input\_log\_group\_names) | Cloudwatch Log Group names to subscribe to Observe Lambda | `list(string)` | n/a | yes |
 
 ## Outputs
 
-No output.
-
+No outputs.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License

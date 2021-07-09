@@ -28,27 +28,23 @@ resource "aws_iam_role_policy_attachment" "firehose" {
   policy_arn = var.kinesis_firehose.firehose_iam_policy.arn
 }
 
-resource "aws_cloudformation_stack" "this" {
-  name       = var.name
-  parameters = {}
+resource "aws_cloudwatch_metric_stream" "main" {
+  name          = var.name
+  role_arn      = local.iam_role_arn
+  firehose_arn  = var.kinesis_firehose.firehose_delivery_stream.arn
+  output_format = "json"
 
-  template_body = yamlencode({
-    AWSTemplateFormatVersion = "2010-09-09"
-    Description              = "Subscribe Cloudwatch Metric Streams to Observe Kinesis Firehose",
-    Resources = {
-      MetricStream = {
-        Type = "AWS::CloudWatch::MetricStream",
-        Properties = merge({
-          Name         = var.name
-          FirehoseArn  = var.kinesis_firehose.firehose_delivery_stream.arn
-          RoleArn      = local.iam_role_arn
-          OutputFormat = "json"
-          }, length(var.exclude_filters) == 0 ? {} : {
-          ExcludeFilters = [for i in var.exclude_filters : { "Namespace" = i }]
-          }, length(var.include_filters) == 0 ? {} : {
-          IncludeFilters = [for i in var.include_filters : { "Namespace" = i }]
-        })
-      }
+  dynamic "include_filter" {
+    for_each = var.include_filters
+    content {
+      namespace = include_filter.value
     }
-  })
+  }
+
+  dynamic "exclude_filter" {
+    for_each = var.exclude_filters
+    content {
+      namespace = exclude_filter.value
+    }
+  }
 }
