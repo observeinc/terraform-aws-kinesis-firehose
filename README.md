@@ -4,9 +4,14 @@
 
 Terraform module which creates a Kinesis Firehose delivery stream towards Observe.
 
+Additionally, this repository provides submodules to interact with the lambda function set up by this module:
+
+* [Subscribe CloudWatch Logs to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/cloudwatch_logs_subscription)
+* [Collect CloudWatch Metrics Stream](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/cloudwatch_metrics)
+
 ## Terraform versions
 
-Terraform 0.12 and newer. Submit pull-requests to `main` branch.
+Terraform 0.13 and newer. Submit pull-requests to `main` branch.
 
 ## Usage
 
@@ -106,6 +111,8 @@ Currently the module configures two output streams: one for S3 delivery, and ano
 
 ## Examples
 
+This repository contains examples of how to solve for concrete usecases:
+
 * [EventBridge to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/examples/eventbridge)
 * [Kinesis Data Stream to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/examples/kinesis)
 
@@ -114,50 +121,71 @@ Currently the module configures two output streams: one for S3 delivery, and ano
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13 |
-| aws | >= 3.15 |
-| random | >= 3.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.15 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | >= 3.15 |
-| random | >= 3.0.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.49.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_cloudwatch_log_stream.http_endpoint_delivery](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_stream) | resource |
+| [aws_cloudwatch_log_stream.s3_delivery](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_stream) | resource |
+| [aws_iam_policy.firehose_cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.firehose_s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.kinesis_firehose](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.put_record](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.firehose](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.firehose_cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.firehose_s3](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.kinesis_firehose](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_kinesis_firehose_delivery_stream.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_firehose_delivery_stream) | resource |
+| [aws_s3_bucket.bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
+| [random_string.bucket_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cloudwatch\_log\_group | The CloudWatch group for logging. Providing this value enables logging. | <pre>object({<br>    name = string<br>    arn  = string<br>  })</pre> | `null` | no |
-| http\_endpoint\_buffering\_interval | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `60` | no |
-| http\_endpoint\_buffering\_size | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `1` | no |
-| http\_endpoint\_cloudwatch\_log\_stream\_name | Log stream name for HTTP endpoint logs. If empty, log stream will be disabled | `string` | `"HttpEndpointDelivery"` | no |
-| http\_endpoint\_content\_encoding | Kinesis Data Firehose uses the content encoding to compress the body of a request before sending the request to the destination. | `string` | `"GZIP"` | no |
-| http\_endpoint\_name | Name of Kinesis Firehose target HTTP endpoint | `string` | `"Observe"` | no |
-| http\_endpoint\_retry\_duration | The total amount of time that Kinesis Data Firehose spends on retries. This duration starts after the initial attempt to send data to the custom destination via HTTPS endpoint fails. It doesn't include the periods during which Kinesis Data Firehose waits for acknowledgment from the specified destination after each attempt. | `number` | `300` | no |
-| http\_endpoint\_s3\_backup\_mode | S3 backup mode for Kinesis Firehose HTTP endpoint | `string` | `"FailedDataOnly"` | no |
-| iam\_name\_prefix | Prefix used for all created IAM roles and policies | `string` | `"observe-kinesis-firehose-"` | no |
-| kinesis\_stream | Kinesis Data Stream ARN to configure as source | `object({ arn = string })` | `null` | no |
-| name | Name of Kinesis Firehose resource | `string` | n/a | yes |
-| observe\_customer | Observe Customer ID | `string` | n/a | yes |
-| observe\_token | Observe Token | `string` | n/a | yes |
-| observe\_url | Observe URL | `string` | `"https://kinesis.collect.observeinc.com"` | no |
-| s3\_delivery\_bucket | S3 bucket to be used as backup for message delivery | <pre>object({<br>    arn = string<br>  })</pre> | `null` | no |
-| s3\_delivery\_buffer\_interval | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `300` | no |
-| s3\_delivery\_buffer\_size | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `5` | no |
-| s3\_delivery\_cloudwatch\_log\_stream\_name | Log stream name for S3 delivery logs. If empty, log stream will be disabled | `string` | `"S3Delivery"` | no |
-| s3\_delivery\_compression\_format | The compression format. If no value is specified, the default is UNCOMPRESSED. | `string` | `"UNCOMPRESSED"` | no |
-| s3\_delivery\_prefix | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files | `string` | `null` | no |
-| tags | A map of tags to add to all resources | `map(string)` | `{}` | no |
+| <a name="input_cloudwatch_log_group"></a> [cloudwatch\_log\_group](#input\_cloudwatch\_log\_group) | The CloudWatch group for logging. Providing this value enables logging. | <pre>object({<br>    name = string<br>    arn  = string<br>  })</pre> | `null` | no |
+| <a name="input_http_endpoint_buffering_interval"></a> [http\_endpoint\_buffering\_interval](#input\_http\_endpoint\_buffering\_interval) | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `60` | no |
+| <a name="input_http_endpoint_buffering_size"></a> [http\_endpoint\_buffering\_size](#input\_http\_endpoint\_buffering\_size) | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `1` | no |
+| <a name="input_http_endpoint_cloudwatch_log_stream_name"></a> [http\_endpoint\_cloudwatch\_log\_stream\_name](#input\_http\_endpoint\_cloudwatch\_log\_stream\_name) | Log stream name for HTTP endpoint logs. If empty, log stream will be disabled | `string` | `"HttpEndpointDelivery"` | no |
+| <a name="input_http_endpoint_content_encoding"></a> [http\_endpoint\_content\_encoding](#input\_http\_endpoint\_content\_encoding) | Kinesis Data Firehose uses the content encoding to compress the body of a request before sending the request to the destination. | `string` | `"GZIP"` | no |
+| <a name="input_http_endpoint_name"></a> [http\_endpoint\_name](#input\_http\_endpoint\_name) | Name of Kinesis Firehose target HTTP endpoint | `string` | `"Observe"` | no |
+| <a name="input_http_endpoint_retry_duration"></a> [http\_endpoint\_retry\_duration](#input\_http\_endpoint\_retry\_duration) | The total amount of time that Kinesis Data Firehose spends on retries. This duration starts after the initial attempt to send data to the custom destination via HTTPS endpoint fails. It doesn't include the periods during which Kinesis Data Firehose waits for acknowledgment from the specified destination after each attempt. | `number` | `300` | no |
+| <a name="input_http_endpoint_s3_backup_mode"></a> [http\_endpoint\_s3\_backup\_mode](#input\_http\_endpoint\_s3\_backup\_mode) | S3 backup mode for Kinesis Firehose HTTP endpoint | `string` | `"FailedDataOnly"` | no |
+| <a name="input_iam_name_prefix"></a> [iam\_name\_prefix](#input\_iam\_name\_prefix) | Prefix used for all created IAM roles and policies | `string` | `"observe-kinesis-firehose-"` | no |
+| <a name="input_kinesis_stream"></a> [kinesis\_stream](#input\_kinesis\_stream) | Kinesis Data Stream ARN to configure as source | `object({ arn = string })` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | Name of Kinesis Firehose resource | `string` | n/a | yes |
+| <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID | `string` | n/a | yes |
+| <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe Token | `string` | n/a | yes |
+| <a name="input_observe_url"></a> [observe\_url](#input\_observe\_url) | Observe URL | `string` | `"https://kinesis.collect.observeinc.com"` | no |
+| <a name="input_s3_delivery_bucket"></a> [s3\_delivery\_bucket](#input\_s3\_delivery\_bucket) | S3 bucket to be used as backup for message delivery | <pre>object({<br>    arn = string<br>  })</pre> | `null` | no |
+| <a name="input_s3_delivery_buffer_interval"></a> [s3\_delivery\_buffer\_interval](#input\_s3\_delivery\_buffer\_interval) | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `300` | no |
+| <a name="input_s3_delivery_buffer_size"></a> [s3\_delivery\_buffer\_size](#input\_s3\_delivery\_buffer\_size) | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `5` | no |
+| <a name="input_s3_delivery_cloudwatch_log_stream_name"></a> [s3\_delivery\_cloudwatch\_log\_stream\_name](#input\_s3\_delivery\_cloudwatch\_log\_stream\_name) | Log stream name for S3 delivery logs. If empty, log stream will be disabled | `string` | `"S3Delivery"` | no |
+| <a name="input_s3_delivery_compression_format"></a> [s3\_delivery\_compression\_format](#input\_s3\_delivery\_compression\_format) | The compression format. If no value is specified, the default is UNCOMPRESSED. | `string` | `"UNCOMPRESSED"` | no |
+| <a name="input_s3_delivery_prefix"></a> [s3\_delivery\_prefix](#input\_s3\_delivery\_prefix) | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files | `string` | `null` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| firehose\_delivery\_stream | Kinesis Firehose delivery stream towards Observe |
-| firehose\_iam\_policy | IAM policy to publish records to Kinesis Firehose. If a Kinesis Data Stream is set as a source, no policy is provided since Firehose will not allow any other event source. |
-
+| <a name="output_firehose_delivery_stream"></a> [firehose\_delivery\_stream](#output\_firehose\_delivery\_stream) | Kinesis Firehose delivery stream towards Observe |
+| <a name="output_firehose_iam_policy"></a> [firehose\_iam\_policy](#output\_firehose\_iam\_policy) | IAM policy to publish records to Kinesis Firehose. If a Kinesis Data Stream is set as a source, no policy is provided since Firehose will not allow any other event source. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
