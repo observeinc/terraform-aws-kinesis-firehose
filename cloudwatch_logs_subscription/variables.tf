@@ -22,3 +22,15 @@ variable "filter_name" {
   type        = string
   default     = "observe-filter"
 }
+
+variable "iam_name_prefix" {
+  description = "Prefix used for all created IAM roles and policies"
+  type        = string
+  default     = "observe-kinesis-firehose-"
+}
+
+variable "iam_role_arn" {
+  description = "ARN of IAM role to use for Cloudwatch Logs subscription"
+  type        = string
+  default     = ""
+}
