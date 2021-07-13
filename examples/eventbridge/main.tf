@@ -9,7 +9,7 @@ resource "aws_cloudwatch_log_group" "group" {
   retention_in_days = 14
 }
 
-module "observe_kinesis" {
+module "observe_kinesis_firehose" {
   source           = "../.."
   observe_customer = var.observe_customer
   observe_token    = var.observe_token
