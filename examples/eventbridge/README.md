@@ -23,7 +23,7 @@ Note that this will create AWS resources - once you are done, run `terraform des
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.21 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.68 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0.0 |
 
@@ -31,8 +31,8 @@ Note that this will create AWS resources - once you are done, run `terraform des
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.39.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.68 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3.0.0 |
 
 ## Modules
 
