@@ -127,3 +127,9 @@ variable "kinesis_stream" {
   type        = object({ arn = string })
   default     = null
 }
+
+variable "common_attributes" {
+  description = "Key value pairs sent as payload metadata"
+  type        = map(string)
+  default     = {}
+}

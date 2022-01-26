@@ -159,6 +159,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_cloudwatch_log_group"></a> [cloudwatch\_log\_group](#input\_cloudwatch\_log\_group) | The CloudWatch group for logging. Providing this value enables logging. | <pre>object({<br>    name = string<br>    arn  = string<br>  })</pre> | `null` | no |
+| <a name="input_common_attributes"></a> [common\_attributes](#input\_common\_attributes) | Key value pairs sent as payload metadata | `map(string)` | `{}` | no |
 | <a name="input_http_endpoint_buffering_interval"></a> [http\_endpoint\_buffering\_interval](#input\_http\_endpoint\_buffering\_interval) | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `60` | no |
 | <a name="input_http_endpoint_buffering_size"></a> [http\_endpoint\_buffering\_size](#input\_http\_endpoint\_buffering\_size) | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `1` | no |
 | <a name="input_http_endpoint_cloudwatch_log_stream_name"></a> [http\_endpoint\_cloudwatch\_log\_stream\_name](#input\_http\_endpoint\_cloudwatch\_log\_stream\_name) | Log stream name for HTTP endpoint logs. If empty, log stream will be disabled | `string` | `"HttpEndpointDelivery"` | no |
