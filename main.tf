@@ -65,6 +65,13 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
 
     request_configuration {
       content_encoding = var.http_endpoint_content_encoding
+      dynamic "common_attributes" {
+        for_each = var.common_attributes
+        content {
+          name  = common_attributes.key
+          value = common_attributes.value
+        }
+      }
     }
 
     cloudwatch_logging_options {
