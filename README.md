@@ -4,10 +4,12 @@
 
 Terraform module which creates a Kinesis Firehose delivery stream towards Observe.
 
-Additionally, this repository provides submodules to interact with the lambda function set up by this module:
+Additionally, this repository provides submodules to interact with the Firehose delivery stream set up by this module:
 
 * [Subscribe CloudWatch Logs to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/cloudwatch_logs_subscription)
 * [Collect CloudWatch Metrics Stream](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/cloudwatch_metrics)
+* [Collect EventBridge](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/eventbridge)
+* [Collect EKS Fargate logs](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/eks)
 
 ## Terraform versions
 
