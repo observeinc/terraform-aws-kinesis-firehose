@@ -14,9 +14,13 @@ variable "observe_domain" {
   default     = "observeinc.com"
 }
 
-variable "eks_cluster_name" {
-  description = "EKS cluster name"
+variable "eks_cluster_arn" {
+  description = "EKS cluster ARN"
   type        = string
+  validation {
+    condition     = try(regex("arn:aws:eks:[^:]+:\\d{12}:cluster/.+", var.eks_cluster_arn), null) != null
+    error_message = "ARN identifier is malformed."
+  }
 }
 
 variable "pod_execution_role_arns" {
