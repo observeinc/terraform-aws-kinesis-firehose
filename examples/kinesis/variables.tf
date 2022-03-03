@@ -8,8 +8,8 @@ variable "observe_token" {
   type        = string
 }
 
-variable "observe_url" {
-  description = "Observe URL"
+variable "observe_domain" {
+  description = "Observe domain"
   type        = string
-  default     = "https://kinesis.collect.observeinc.com"
+  default     = "observeinc.com"
 }

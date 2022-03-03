@@ -173,8 +173,9 @@ No modules.
 | <a name="input_kinesis_stream"></a> [kinesis\_stream](#input\_kinesis\_stream) | Kinesis Data Stream ARN to configure as source | `object({ arn = string })` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of Kinesis Firehose resource | `string` | n/a | yes |
 | <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID | `string` | n/a | yes |
+| <a name="input_observe_domain"></a> [observe\_domain](#input\_observe\_domain) | Observe domain | `string` | `"observeinc.com"` | no |
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe Token | `string` | n/a | yes |
-| <a name="input_observe_url"></a> [observe\_url](#input\_observe\_url) | Observe URL | `string` | `"https://kinesis.collect.observeinc.com"` | no |
+| <a name="input_observe_url"></a> [observe\_url](#input\_observe\_url) | Observe URL. Deprecated. | `string` | `""` | no |
 | <a name="input_s3_delivery_bucket"></a> [s3\_delivery\_bucket](#input\_s3\_delivery\_bucket) | S3 bucket to be used as backup for message delivery | <pre>object({<br>    arn = string<br>  })</pre> | `null` | no |
 | <a name="input_s3_delivery_buffer_interval"></a> [s3\_delivery\_buffer\_interval](#input\_s3\_delivery\_buffer\_interval) | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `300` | no |
 | <a name="input_s3_delivery_buffer_size"></a> [s3\_delivery\_buffer\_size](#input\_s3\_delivery\_buffer\_size) | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `5` | no |

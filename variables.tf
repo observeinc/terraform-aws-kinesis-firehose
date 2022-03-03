@@ -13,6 +13,12 @@ variable "observe_token" {
   type        = string
 }
 
+variable "observe_domain" {
+  description = "Observe domain"
+  type        = string
+  default     = "observeinc.com"
+}
+
 variable "s3_delivery_bucket" {
   description = "S3 bucket to be used as backup for message delivery"
   type = object({
@@ -23,9 +29,9 @@ variable "s3_delivery_bucket" {
 
 # Optional input variables
 variable "observe_url" {
-  description = "Observe URL"
+  description = "Observe URL. Deprecated."
   type        = string
-  default     = "https://kinesis.collect.observeinc.com"
+  default     = ""
 }
 
 variable "http_endpoint_name" {
