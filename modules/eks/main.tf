@@ -28,7 +28,7 @@ resource "kubernetes_namespace_v1" "aws_observability" {
 }
 
 module "observe_kinesis" {
-  source = "./.."
+  source = "../.."
 
   name             = format("observe-eks-%s", local.eks_cluster_name)
   observe_customer = var.observe_customer
