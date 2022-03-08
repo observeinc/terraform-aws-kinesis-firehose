@@ -6,6 +6,7 @@ locals {
   access_key                   = format("%s %s", var.observe_customer, var.observe_token)
   create_s3_bucket             = var.s3_delivery_bucket == null
   s3_bucket_arn                = local.create_s3_bucket ? aws_s3_bucket.bucket[0].arn : var.s3_delivery_bucket.arn
+  observe_url                  = var.observe_url != "" ? var.observe_url : format("https://collect.%s/v1/kinesis", var.observe_domain)
 }
 
 resource "random_string" "bucket_suffix" {
@@ -53,7 +54,7 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
   }
 
   http_endpoint_configuration {
-    url            = var.observe_url
+    url            = local.observe_url
     name           = var.http_endpoint_name
     access_key     = local.access_key
     role_arn       = aws_iam_role.firehose.arn

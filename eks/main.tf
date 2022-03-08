@@ -33,7 +33,7 @@ module "observe_kinesis" {
   name             = format("observe-eks-%s", local.eks_cluster_name)
   observe_customer = var.observe_customer
   observe_token    = var.observe_token
-  observe_url      = format("https://kinesis.collect.%s", var.observe_domain)
+  observe_domain   = var.observe_domain
   common_attributes = {
     clusterUid = data.kubernetes_namespace_v1.default.metadata[0].uid
   }
