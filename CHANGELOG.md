@@ -7,9 +7,20 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v0.5.0"></a>
+## [v0.5.0] - 2022-03-15
+
+- chore: remove copy-pasta'd workflow
+- chore: update pre-commit hooks ([#18](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/18))
+- chore: add pre-commit autoupdate workflow ([#16](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/16))
+- feat: introduce observe_domain var ([#14](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/14))
+- feat: add cross-account usage example ([#13](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/13))
+
+
 <a name="v0.4.0"></a>
 ## [v0.4.0] - 2022-02-15
 
+- chore: update CHANGELOG
 - fix: pin upperbound AWS version ([#12](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/12))
 - fix: adjust EKS variables, remove provider ([#11](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/11))
 - feat: add EKS module ([#10](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/10))
@@ -60,7 +71,8 @@ cluster with Fargate logging towards Observe.
 - First commit
 
 
-[Unreleased]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.5.0...HEAD
+[v0.5.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.1.0...v0.2.0
