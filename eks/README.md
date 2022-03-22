@@ -3,13 +3,13 @@
 Terraform module which sets up a Kinesis Firehose delivery stream as a target for EKS Fargate logs. This codifies the process detailed in the official [fargate logging documentation](https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html).
 
 You will need to provide:
-a) an EKS cluster name
+a) an EKS cluster ARN
 b) Observe credentials
 c) all pod execution roles used by the Fargate profiles in that cluster
 
 The module performs the following:
 
-1) given the EKS cluster name (a), generate an access token towards the Kubernetes
+1) given the EKS cluster ARN (a), generate an access token towards the Kubernetes
    cluster and read the UID of the `default` namespace, which we will use to
    identify the source of Fargate logs.
 2) given Observe credentials (b) and `clusterUid` (1), create a Kinesis Firehose
@@ -40,7 +40,7 @@ module "observe_kinesis_firehose" {
   observe_customer = var.observe_customer
   observe_token    = var.observe_token
 
-  eks_cluster_name = "my-example-cluster"
+  eks_cluster_arn = "arn:aws:eks:us-east-1:123456789012:cluster/cluster-name"
   pod_execution_role_arns = [
     "arn:aws:iam::123456789012:role/my-example-cluster-FargatePodExecutionRole-K3ZLJXIIXQGE",
     "arn:aws:iam::123456789012:role/my-example-cluster-FargatePodExecutionRole-AE134MASIOL4",
