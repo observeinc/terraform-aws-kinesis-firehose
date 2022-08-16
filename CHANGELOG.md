@@ -7,9 +7,21 @@ All notable changes to this project will be documented in this file.
 
 
 
+<a name="v1.0.0"></a>
+## [v1.0.0] - 2022-08-16
+
+- chore: bump CHANGELOG
+- fix!: remove cloudwatch_logs_subscription submodue ([#21](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/21))
+- feat!: migrate to per-customer collector endpoint ([#22](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/22))
+- fix!: move submodules to modules/ ([#15](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/15))
+- chore: update pre-commit hooks
+- Correction of EKS readme to supply EKS ARN instead of EKS name
+
+
 <a name="v0.5.0"></a>
 ## [v0.5.0] - 2022-03-15
 
+- chore: update CHANGELOG
 - chore: remove copy-pasta'd workflow
 - chore: update pre-commit hooks ([#18](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/18))
 - chore: add pre-commit autoupdate workflow ([#16](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/16))
@@ -71,7 +83,8 @@ cluster with Fargate logging towards Observe.
 - First commit
 
 
-[Unreleased]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v1.0.0...HEAD
+[v1.0.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.5.0...v1.0.0
 [v0.5.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.4.0...v0.5.0
 [v0.4.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v0.2.0...v0.3.0
