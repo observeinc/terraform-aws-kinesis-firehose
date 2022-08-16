@@ -11,6 +11,11 @@ variable "observe_customer" {
 variable "observe_token" {
   description = "Observe Token"
   type        = string
+
+  validation {
+    condition     = contains(split("", var.observe_token), ":")
+    error_message = "Token format does not follow {datastream_id}:{datastream_secret} format."
+  }
 }
 
 variable "observe_domain" {
