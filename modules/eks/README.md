@@ -69,7 +69,7 @@ module "observe_kinesis_firehose" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_observe_kinesis"></a> [observe\_kinesis](#module\_observe\_kinesis) | ./.. | n/a |
+| <a name="module_observe_kinesis"></a> [observe\_kinesis](#module\_observe\_kinesis) | ../.. | n/a |
 
 ## Resources
 

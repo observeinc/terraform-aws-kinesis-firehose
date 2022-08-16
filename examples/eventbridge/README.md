@@ -38,7 +38,7 @@ Note that this will create AWS resources - once you are done, run `terraform des
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_observe_eventbridge_kinesis"></a> [observe\_eventbridge\_kinesis](#module\_observe\_eventbridge\_kinesis) | ../../eventbridge | n/a |
+| <a name="module_observe_eventbridge_kinesis"></a> [observe\_eventbridge\_kinesis](#module\_observe\_eventbridge\_kinesis) | ../../modules/eventbridge | n/a |
 | <a name="module_observe_kinesis_firehose"></a> [observe\_kinesis\_firehose](#module\_observe\_kinesis\_firehose) | ../.. | n/a |
 
 ## Resources

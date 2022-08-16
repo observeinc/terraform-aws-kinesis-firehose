@@ -13,7 +13,7 @@ provider "kubernetes" {
 }
 
 module "observe_kinesis_firehose" {
-  source = "../..//eks"
+  source = "../../modules/eks"
 
   observe_customer = var.observe_customer
   observe_token    = var.observe_token

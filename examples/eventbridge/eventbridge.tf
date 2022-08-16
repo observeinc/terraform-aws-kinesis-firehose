@@ -6,7 +6,7 @@ resource "aws_cloudwatch_event_rule" "scheduled" {
 
 
 module "observe_eventbridge_kinesis" {
-  source           = "../../eventbridge"
+  source           = "../../modules/eventbridge"
   kinesis_firehose = module.observe_kinesis_firehose
   rules = [
     aws_cloudwatch_event_rule.scheduled,
