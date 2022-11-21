@@ -20,8 +20,14 @@ resource "aws_s3_bucket" "bucket" {
   count = local.create_s3_bucket ? 1 : 0
 
   bucket        = format("%s-%s", var.name, random_string.bucket_suffix[0].result)
-  acl           = "private"
   force_destroy = true
+}
+
+resource "aws_s3_bucket_acl" "bucket" {
+  count = local.create_s3_bucket ? 1 : 0
+
+  bucket = aws_s3_bucket.bucket[0].id
+  acl    = "private"
 }
 
 resource "aws_kinesis_firehose_delivery_stream" "this" {
