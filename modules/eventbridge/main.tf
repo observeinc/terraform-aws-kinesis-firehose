@@ -6,6 +6,7 @@ locals {
 resource "aws_iam_role" "this" {
   count              = var.iam_role_arn == "" ? 1 : 0
   name_prefix        = var.iam_name_prefix
+  tags               = var.tags
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
