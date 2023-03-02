@@ -123,7 +123,7 @@ This repository contains examples of how to solve for concrete usecases:
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.75 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0.0 |
 

@@ -33,14 +33,14 @@ module "observe_kinesis_firehose_cloudwatch_logs_subscription" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.68, < 4.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 2.68 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.68, < 4.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 2.68 |
 
 ## Modules
 
@@ -59,7 +59,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_filter_name"></a> [filter\_name](#input\_filter\_name) | Filter name | `string` | `"observe-filter"` | no |
-| <a name="input_filter_pattern"></a> [filter\_pattern](#input\_filter\_pattern) | The filter pattern to use. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) | `string` | `""` | no |
+| <a name="input_filter_pattern"></a> [filter\_pattern](#input\_filter\_pattern) | The filter pattern to use. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html) | `string` | `null` | no |
 | <a name="input_iam_name_prefix"></a> [iam\_name\_prefix](#input\_iam\_name\_prefix) | Prefix used for all created IAM roles and policies | `string` | `"observe-kinesis-firehose-"` | no |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | ARN of IAM role to use for Cloudwatch Logs subscription | `string` | `""` | no |
 | <a name="input_kinesis_firehose"></a> [kinesis\_firehose](#input\_kinesis\_firehose) | Observe Kinesis Firehose module | <pre>object({<br>    firehose_delivery_stream = object({ arn = string })<br>    firehose_iam_policy      = object({ arn = string })<br>  })</pre> | n/a | yes |

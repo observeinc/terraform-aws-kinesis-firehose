@@ -11,5 +11,5 @@ variable "observe_token" {
 variable "observe_domain" {
   description = "Observe domain"
   type        = string
-  default     = "observeinc.com"
+  default     = null
 }

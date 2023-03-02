@@ -1,12 +1,14 @@
 variable "cluster_name" {
   description = "EKS Cluster Name"
   type        = string
+  nullable    = false
   default     = "observe-eks-demo"
 }
 
 variable "cluster_version" {
   description = "EKS Cluster Version"
   type        = string
+  nullable    = false
   default     = "1.21"
 }
 
@@ -24,5 +26,5 @@ variable "observe_token" {
 variable "observe_domain" {
   description = "Observe Domain"
   type        = string
-  default     = "observeinc.com"
+  default     = null
 }
