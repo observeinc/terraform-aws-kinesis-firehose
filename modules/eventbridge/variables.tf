@@ -19,8 +19,8 @@ variable "iam_role_arn" {
 }
 
 variable "rules" {
-  description = "List of EventBridge rules to subscribe to Firehose"
-  type        = list(object({ name = string }))
+  description = "Set of EventBridge rules to subscribe to Firehose"
+  type        = set(object({ name = string }))
   default     = []
 }
 
