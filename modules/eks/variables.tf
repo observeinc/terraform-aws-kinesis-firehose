@@ -11,7 +11,7 @@ variable "observe_token" {
 variable "observe_domain" {
   description = "Observe Domain"
   type        = string
-  default     = "observeinc.com"
+  default     = null
 }
 
 variable "eks_cluster_arn" {
