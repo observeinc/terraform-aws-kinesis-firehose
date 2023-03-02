@@ -30,8 +30,8 @@ resource "aws_iam_role_policy_attachment" "firehose" {
 }
 
 resource "aws_cloudwatch_event_target" "firehose" {
-  count    = length(var.rules)
+  for_each = { for r in var.rules : r.name => r }
   arn      = var.kinesis_firehose.firehose_delivery_stream.arn
-  rule     = var.rules[count.index].name
   role_arn = local.iam_role_arn
+  rule     = each.value.name
 }
