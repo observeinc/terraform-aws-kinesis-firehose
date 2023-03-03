@@ -21,10 +21,13 @@ variable "iam_role_arn" {
 }
 
 variable "rules" {
-  description = "Set of EventBridge rules to subscribe to Firehose"
-  type        = set(object({ name = string }))
+  description = <<-EOF
+    Map of EventBridge rules to subscribe to Firehose. Keys are
+    only used to provide stable resource addresses.
+  EOF
+  type        = map(object({ name = string }))
   nullable    = false
-  default     = []
+  default     = {}
 }
 
 variable "tags" {
