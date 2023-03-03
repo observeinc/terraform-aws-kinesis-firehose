@@ -8,22 +8,18 @@ supported in the terraform AWS provider. This module uses a CloudFormation
 template to configure a Cloudwatch Metric Stream towards an existing Kinesis
 Firehose.
 
-## Terraform versions
-
-Terraform 0.12 and newer. Submit pull-requests to `main` branch.
-
 ## Usage
 
 ```hcl
 module "kinesis_firehose" {
-  source           = "github.com/observeinc/terraform-aws-kinesis-firehose"
+  source           = "observeinc/kinesis-firehose/aws"
   name             = var.name
   observe_customer = var.observe_customer
   observe_token    = var.observe_token
 }
 
 module "cloudwatch_metrics" {
-  source           = "github.com/observeinc/terraform-aws-kinesis-firehose//cloudwatch_metrics"
+  source           = "observeinc/kinesis-firehose/aws//cloudwatch_metrics"
   kinesis_firehose = module.kinesis_firehose
 }
 ```
@@ -32,7 +28,7 @@ You can also provide `include_filters` or `exclude_filters`, e.g:
 
 ```
 module "cloudwatch_metrics" {
-  source           = "github.com/observeinc/terraform-aws-kinesis-firehose//cloudwatch_metrics"
+  source           = "observeinc/kinesis-firehose/aws//cloudwatch_metrics"
   kinesis_firehose = module.kinesis_firehose
   exclude_filters  = ["AWS/Firehose"]
 }

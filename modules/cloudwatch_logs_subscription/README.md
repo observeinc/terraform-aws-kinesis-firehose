@@ -3,8 +3,6 @@
 Given a list of Cloudwatch Log Group names and an Observe Kinesis Firehose module, this 
 module subscribes each Log Group to the Kinesis Firehose.
 
-Terraform 0.12 and newer. Submit pull-requests to `main` branch.
-
 ## Usage
 
 ```hcl
@@ -13,14 +11,14 @@ resource "aws_cloudwatch_log_group" "group" {
 }
 
 module "observe_kinesis_firehose" {
-  source           = "github.com/observeinc/terraform-aws-kinesis-firehose"
+  source           = "observeinc/kinesis-firehose/aws"
   observe_customer = var.observe_customer
   observe_token    = var.observe_token
   name             = random_pet.run.id
 }
 
 module "observe_kinesis_firehose_cloudwatch_logs_subscription" {
-  source           = "github.com/observeinc/terraform-aws-kinesis-firehose//cloudwatch_logs_subscription"
+  source           = "observeinc/kinesis-firehose/aws//cloudwatch_logs_subscription"
   kinesis_firehose = module.observe_kinesis_firehose
   log_group_names  = [
     aws_cloudwatch_log_group.group.name
