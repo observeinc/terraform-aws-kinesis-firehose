@@ -11,15 +11,11 @@ Additionally, this repository provides submodules to interact with the Firehose 
 * [Collect EventBridge](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/eventbridge)
 * [Collect EKS Fargate logs](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/eks)
 
-## Terraform versions
-
-Terraform 0.13 and newer. Submit pull-requests to `main` branch.
-
 ## Usage
 
 ```hcl
 module "observe_kinesis_firehose" {
-  source = "github.com/observeinc/terraform-aws-kinesis-firehose"
+  source = "observeinc/kinesis-firehose/aws"
 
   name                = "observe-kinesis-firehose"
   observe_customer    = "<id>"
