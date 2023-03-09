@@ -3,11 +3,6 @@
 This module configures AWS Cloudwatch Metrics to be sent to Observe through a
 Kinesis Firehose stream.
 
-Cloudwatch Metrics Streams are a recent feature, and as such are not directly
-supported in the terraform AWS provider. This module uses a CloudFormation
-template to configure a Cloudwatch Metric Stream towards an existing Kinesis
-Firehose.
-
 ## Usage
 
 ```hcl
