@@ -14,7 +14,8 @@ variable "log_group_names" {
 variable "filter_pattern" {
   description = "The filter pattern to use. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html)"
   type        = string
-  default     = null
+  nullable    = false
+  default     = ""
 }
 
 variable "filter_name" {
