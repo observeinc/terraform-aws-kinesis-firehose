@@ -6,10 +6,10 @@ Terraform module which creates a Kinesis Firehose delivery stream towards Observ
 
 Additionally, this repository provides submodules to interact with the Firehose delivery stream set up by this module:
 
-* [Subscribe CloudWatch Logs to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/cloudwatch_logs_subscription)
-* [Collect CloudWatch Metrics Stream](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/cloudwatch_metrics)
-* [Collect EventBridge](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/eventbridge)
-* [Collect EKS Fargate logs](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/eks)
+* [Subscribe CloudWatch Logs to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/modules/cloudwatch_logs_subscription)
+* [Collect CloudWatch Metrics Stream](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/modules/cloudwatch_metrics)
+* [Collect EventBridge](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/modules/eventbridge)
+* [Collect EKS Fargate logs](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/modules/eks)
 
 ## Usage
 
@@ -39,7 +39,7 @@ resource "aws_s3_bucket" "bucket" {
 }
 
 module "observe_kinesis_firehose" {
-  source = "github.com/observeinc/terraform-aws-kinesis-firehose"
+  source = "observeinc/kinesis-firehose/aws"
 
   name                = "observe-kinesis-firehose"
   observe_customer    = "<id>"
@@ -60,7 +60,7 @@ resource "aws_kinesis_stream" "example" {
 }
 
 module "observe_kinesis_firehose" {
-  source = "github.com/observeinc/terraform-aws-kinesis-firehose"
+  source = "observeinc/kinesis-firehose/aws"
 
   name                = "observe-kinesis-firehose"
   observe_customer    = "<id>"
@@ -96,7 +96,7 @@ resource "aws_cloudwatch_log_group" "group" {
 }
 
 module "observe_kinesis_firehose" {
-  source = "github.com/observeinc/terraform-aws-kinesis-firehose"
+  source = "observeinc/kinesis-firehose/aws"
 
   name                 = "observe-kinesis-firehose"
   observe_customer     = "<id>"
@@ -113,6 +113,8 @@ This repository contains examples of how to solve for concrete usecases:
 
 * [EventBridge to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/examples/eventbridge)
 * [Kinesis Data Stream to Kinesis Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/examples/kinesis)
+* [Cross Account Role for Firehose](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/examples/cross-account)
+* [EKS to Observe](https://github.com/observeinc/terraform-aws-kinesis-firehose/tree/main/examples/eks)
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
