@@ -1,13 +1,10 @@
-# [2.0.0](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v1.0.3...v2.0.0) (2023-03-03)
+## [2.0.1](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.0.0...v2.0.1) (2023-05-31)
 
 
-* feat(eventbridge)!: switch `rules` variable to type `map` (#32) ([3049485](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/3049485565f0225cbe3d805d3a68175a2e63bfe5)), closes [#32](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/32)
+### Bug Fixes
 
-
-### BREAKING CHANGES
-
-* `rules` must be converted from a list to a map. Keys in this map are
-only used for addressing purposes within terraform.
+* **cloudwatch_logs_subscription:** set default `filter_pattern` ([#36](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/36)) ([2654150](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/265415097d686f8c2b09005742e41ac6fe07666b)), closes [#34](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/34)
+* pin upperbound version of AWS provider ([#40](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/40)) ([61230ae](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/61230ae6f6e619c844a238694a0e57d58c228cb5))
 
 
 
