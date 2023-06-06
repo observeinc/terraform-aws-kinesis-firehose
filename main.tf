@@ -23,11 +23,20 @@ resource "aws_s3_bucket" "bucket" {
   force_destroy = true
 }
 
+resource "aws_s3_bucket_ownership_controls" "bucket" {
+  count  = local.create_s3_bucket ? 1 : 0
+  bucket = aws_s3_bucket.bucket[0].id
+  rule {
+    object_ownership = "ObjectWriter"
+  }
+}
+
 resource "aws_s3_bucket_acl" "bucket" {
   count = local.create_s3_bucket ? 1 : 0
 
-  bucket = aws_s3_bucket.bucket[0].id
-  acl    = "private"
+  bucket     = aws_s3_bucket.bucket[0].id
+  acl        = "private"
+  depends_on = [aws_s3_bucket_ownership_controls.bucket]
 }
 
 resource "aws_kinesis_firehose_delivery_stream" "this" {
