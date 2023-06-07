@@ -1,10 +1,9 @@
-## [2.0.1](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.0.0...v2.0.1) (2023-05-31)
+## [2.0.2](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.0.1...v2.0.2) (2023-06-07)
 
 
 ### Bug Fixes
 
-* **cloudwatch_logs_subscription:** set default `filter_pattern` ([#36](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/36)) ([2654150](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/265415097d686f8c2b09005742e41ac6fe07666b)), closes [#34](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/34)
-* pin upperbound version of AWS provider ([#40](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/40)) ([61230ae](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/61230ae6f6e619c844a238694a0e57d58c228cb5))
+* **s3:** set object ownership to ObjectWriter ([#42](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/42)) ([09f34b4](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/09f34b4aef2b41b805fda5ba616bbe88183d80ca))
 
 
 
