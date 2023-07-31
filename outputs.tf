@@ -1,6 +1,9 @@
 output "firehose_delivery_stream" {
   description = "Kinesis Firehose delivery stream towards Observe"
-  value       = aws_kinesis_firehose_delivery_stream.this
+  value = {
+    name = aws_kinesis_firehose_delivery_stream.this.name
+    arn  = aws_kinesis_firehose_delivery_stream.this.arn
+  }
 }
 
 output "firehose_iam_policy" {
