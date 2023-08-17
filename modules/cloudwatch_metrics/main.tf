@@ -33,7 +33,7 @@ resource "aws_cloudwatch_metric_stream" "main" {
   name          = var.name
   role_arn      = local.iam_role_arn
   firehose_arn  = var.kinesis_firehose.firehose_delivery_stream.arn
-  output_format = "json"
+  output_format = var.output_format
   tags          = var.tags
 
   dynamic "include_filter" {
