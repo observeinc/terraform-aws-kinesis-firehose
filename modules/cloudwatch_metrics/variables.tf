@@ -47,3 +47,10 @@ variable "tags" {
   nullable    = false
   default     = {}
 }
+
+variable "output_format" {
+  description = "Output format for the stream"
+  type        = string
+  nullable    = false
+  default     = "json"
+}
