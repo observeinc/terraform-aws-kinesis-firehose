@@ -18,7 +18,7 @@ module "observe_kinesis_firehose" {
 }
 
 module "observe_kinesis_firehose_cloudwatch_logs_subscription" {
-  source           = "observeinc/kinesis-firehose/aws//cloudwatch_logs_subscription"
+  source           = "observeinc/kinesis-firehose/aws//modules/cloudwatch_logs_subscription"
   kinesis_firehose = module.observe_kinesis_firehose
   log_group_names  = [
     aws_cloudwatch_log_group.group.name
