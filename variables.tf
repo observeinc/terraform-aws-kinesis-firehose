@@ -49,11 +49,10 @@ variable "http_endpoint_name" {
 }
 
 variable "http_endpoint_s3_backup_mode" {
-  description = "S3 backup mode for Kinesis Firehose HTTP endpoint"
+  description = "S3 backup mode for Kinesis Firehose HTTP endpoint. By default, only data that cannot be delivered to Observe via HTTP is written to S3. To backup all data to S3, set this to `AllData`."
   type        = string
   nullable    = false
-  # alternative is "AllData"
-  default = "FailedDataOnly"
+  default     = "FailedDataOnly"
 }
 
 variable "http_endpoint_buffering_interval" {
