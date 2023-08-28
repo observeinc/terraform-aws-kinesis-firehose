@@ -86,8 +86,9 @@ module "observe_kinesis_firehose" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_eks_cluster_arn"></a> [eks\_cluster\_arn](#input\_eks\_cluster\_arn) | EKS cluster ARN | `string` | n/a | yes |
-| <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID | `string` | n/a | yes |
-| <a name="input_observe_domain"></a> [observe\_domain](#input\_observe\_domain) | Observe Domain | `string` | `null` | no |
+| <a name="input_observe_collection_endpoint"></a> [observe\_collection\_endpoint](#input\_observe\_collection\_endpoint) | Observe Collection Endpoint, e.g https://123456789012.collect.observeinc.com | `string` | `null` | no |
+| <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID. Deprecated, please use observe\_collection\_endpoint instead | `string` | `null` | no |
+| <a name="input_observe_domain"></a> [observe\_domain](#input\_observe\_domain) | Observe domain. Deprecated, please use observe\_collection\_endpoint instead | `string` | `null` | no |
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe Token | `string` | n/a | yes |
 | <a name="input_pod_execution_role_arns"></a> [pod\_execution\_role\_arns](#input\_pod\_execution\_role\_arns) | List of pod execution roles tied to Fargate profiles. | `list(string)` | n/a | yes |
 

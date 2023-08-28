@@ -15,9 +15,8 @@ provider "kubernetes" {
 module "observe_kinesis_firehose" {
   source = "../../modules/eks"
 
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
-  observe_domain   = var.observe_domain
+  observe_collection_endpoint = var.observe_collection_endpoint
+  observe_token               = var.observe_token
 
   eks_cluster_arn         = module.eks.cluster_arn
   pod_execution_role_arns = [for group in module.eks.fargate_profiles : group.fargate_profile_pod_execution_role_arn]

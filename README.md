@@ -17,9 +17,9 @@ Additionally, this repository provides submodules to interact with the Firehose 
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                = "observe-kinesis-firehose"
-  observe_customer    = "<id>"
-  observe_token       = "<token>"
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = "<token>"
 }
 ```
 
@@ -41,10 +41,10 @@ resource "aws_s3_bucket" "bucket" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                = "observe-kinesis-firehose"
-  observe_customer    = "<id>"
-  observe_token       = "<token>"
-  s3_delivery_bucket  = aws_s3_bucket.bucket
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = "<token>"
+  s3_delivery_bucket          = aws_s3_bucket.bucket
 }
 ```
 
@@ -62,10 +62,10 @@ resource "aws_kinesis_stream" "example" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                = "observe-kinesis-firehose"
-  observe_customer    = "<id>"
-  observe_token       = "<token>"
-  kinesis_stream      = aws_kinesis_stream.example
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = "<token>"
+  kinesis_stream              = aws_kinesis_stream.example
 }
 ```
 
@@ -98,10 +98,10 @@ resource "aws_cloudwatch_log_group" "group" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                 = "observe-kinesis-firehose"
-  observe_customer     = "<id>"
-  observe_token        = "<token>"
-  cloudwatch_log_group = aws_cloudwatch_log_group.group
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = "<token>"
+  cloudwatch_log_group        = aws_cloudwatch_log_group.group
 }
 ```
 
@@ -172,8 +172,9 @@ No modules.
 | <a name="input_iam_name_prefix"></a> [iam\_name\_prefix](#input\_iam\_name\_prefix) | Prefix used for all created IAM roles and policies | `string` | `"observe-kinesis-firehose-"` | no |
 | <a name="input_kinesis_stream"></a> [kinesis\_stream](#input\_kinesis\_stream) | Kinesis Data Stream ARN to configure as source | `object({ arn = string })` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of Kinesis Firehose resource | `string` | n/a | yes |
-| <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID | `string` | n/a | yes |
-| <a name="input_observe_domain"></a> [observe\_domain](#input\_observe\_domain) | Observe domain | `string` | `"observeinc.com"` | no |
+| <a name="input_observe_collection_endpoint"></a> [observe\_collection\_endpoint](#input\_observe\_collection\_endpoint) | Observe Collection Endpoint, e.g https://123456789012.collect.observeinc.com | `string` | `null` | no |
+| <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID. Deprecated, please use observe\_collection\_endpoint instead | `string` | `null` | no |
+| <a name="input_observe_domain"></a> [observe\_domain](#input\_observe\_domain) | Observe domain. Deprecated, please use observe\_collection\_endpoint instead | `string` | `"observeinc.com"` | no |
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe Token | `string` | n/a | yes |
 | <a name="input_observe_url"></a> [observe\_url](#input\_observe\_url) | Observe URL. Deprecated. | `string` | `""` | no |
 | <a name="input_s3_delivery_bucket"></a> [s3\_delivery\_bucket](#input\_s3\_delivery\_bucket) | S3 bucket to be used as backup for message delivery | <pre>object({<br>    arn = string<br>  })</pre> | `null` | no |

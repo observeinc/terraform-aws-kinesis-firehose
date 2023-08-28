@@ -11,10 +11,10 @@ resource "aws_cloudwatch_log_group" "group" {
 }
 
 module "observe_kinesis_firehose" {
-  source           = "observeinc/kinesis-firehose/aws"
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
-  name             = random_pet.run.id
+  source                      = "observeinc/kinesis-firehose/aws"
+  observe_collection_endpoint = var.observe_collection_endpoint
+  observe_token               = var.observe_token
+  name                        = random_pet.run.id
 }
 
 module "observe_kinesis_firehose_cloudwatch_logs_subscription" {

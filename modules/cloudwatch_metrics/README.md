@@ -7,10 +7,10 @@ Kinesis Firehose stream.
 
 ```hcl
 module "kinesis_firehose" {
-  source           = "observeinc/kinesis-firehose/aws"
-  name             = var.name
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
+  source                      = "observeinc/kinesis-firehose/aws"
+  name                        = var.name
+  observe_collection_endpoint = var.observe_collection_endpoint
+  observe_token               = var.observe_token
 }
 
 module "cloudwatch_metrics" {
