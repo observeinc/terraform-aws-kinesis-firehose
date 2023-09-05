@@ -18,9 +18,9 @@ resource "aws_cloudwatch_event_rule" "wildcard" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name             = "observe-kinesis-firehose"
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = var.observe_token
 }
 
 module "observe_firehose_eventbridge" {

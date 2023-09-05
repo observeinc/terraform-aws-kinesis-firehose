@@ -5,10 +5,11 @@ provider "aws" {
 resource "random_pet" "run" {}
 
 module "observe_kinesis" {
-  source           = "../.."
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
-  observe_domain   = var.observe_domain
+  source = "../.."
+
+  observe_collection_endpoint = var.observe_collection_endpoint
+  observe_token               = var.observe_token
+
 
   name           = random_pet.run.id
   kinesis_stream = aws_kinesis_stream.this

@@ -17,9 +17,9 @@ Additionally, this repository provides submodules to interact with the Firehose 
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                = "observe-kinesis-firehose"
-  observe_customer    = "<id>"
-  observe_token       = "<token>"
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = var.observe_token
 }
 ```
 
@@ -41,10 +41,10 @@ resource "aws_s3_bucket" "bucket" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                = "observe-kinesis-firehose"
-  observe_customer    = "<id>"
-  observe_token       = "<token>"
-  s3_delivery_bucket  = aws_s3_bucket.bucket
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = var.observe_token
+  s3_delivery_bucket          = aws_s3_bucket.bucket
 }
 ```
 
@@ -62,10 +62,10 @@ resource "aws_kinesis_stream" "example" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                = "observe-kinesis-firehose"
-  observe_customer    = "<id>"
-  observe_token       = "<token>"
-  kinesis_stream      = aws_kinesis_stream.example
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = "<token>"
+  kinesis_stream              = aws_kinesis_stream.example
 }
 ```
 
@@ -98,10 +98,10 @@ resource "aws_cloudwatch_log_group" "group" {
 module "observe_kinesis_firehose" {
   source = "observeinc/kinesis-firehose/aws"
 
-  name                 = "observe-kinesis-firehose"
-  observe_customer     = "<id>"
-  observe_token        = "<token>"
-  cloudwatch_log_group = aws_cloudwatch_log_group.group
+  name                        = "observe-kinesis-firehose"
+  observe_collection_endpoint = "https://<id>.collect.observeinc.com"
+  observe_token               = "<token>"
+  cloudwatch_log_group        = aws_cloudwatch_log_group.group
 }
 ```
 

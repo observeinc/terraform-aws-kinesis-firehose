@@ -90,8 +90,7 @@ Note that this will create AWS resources - once you are done, run `terraform des
 |------|-------------|------|---------|:--------:|
 | <a name="input_external_ids"></a> [external\_ids](#input\_external\_ids) | External ID array | `list(string)` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name for firehose and matching IAM role | `string` | n/a | yes |
-| <a name="input_observe_customer"></a> [observe\_customer](#input\_observe\_customer) | Observe Customer ID | `string` | n/a | yes |
-| <a name="input_observe_domain"></a> [observe\_domain](#input\_observe\_domain) | Observe domain | `string` | `null` | no |
+| <a name="input_observe_collection_endpoint"></a> [observe\_collection\_endpoint](#input\_observe\_collection\_endpoint) | Observe Collection Endpoint, e.g https://123456789012.collect.observeinc.com | `string` | n/a | yes |
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe token | `string` | n/a | yes |
 | <a name="input_user_arn"></a> [user\_arn](#input\_user\_arn) | ARN for external user granted access to assume role | `string` | n/a | yes |
 
