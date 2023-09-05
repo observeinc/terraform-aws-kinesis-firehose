@@ -30,10 +30,11 @@ resource "kubernetes_namespace_v1" "aws_observability" {
 module "observe_kinesis" {
   source = "../.."
 
-  name             = format("observe-eks-%s", local.eks_cluster_name)
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
-  observe_domain   = var.observe_domain
+  name                        = format("observe-eks-%s", local.eks_cluster_name)
+  observe_collection_endpoint = var.observe_collection_endpoint
+  observe_customer            = var.observe_customer
+  observe_token               = var.observe_token
+  observe_domain              = var.observe_domain
   common_attributes = {
     clusterUid = data.kubernetes_namespace_v1.default.metadata[0].uid
   }

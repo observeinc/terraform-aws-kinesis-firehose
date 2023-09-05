@@ -8,10 +8,10 @@ resource "aws_cloudwatch_log_group" "group" {
 }
 
 module "observe_kinesis_firehose" {
-  source           = "../.."
-  observe_customer = var.observe_customer
-  observe_token    = var.observe_token
-  observe_domain   = var.observe_domain
+  source = "../.."
+
+  observe_collection_endpoint = var.observe_collection_endpoint
+  observe_token               = var.observe_token
 
   name                 = var.name
   cloudwatch_log_group = aws_cloudwatch_log_group.group
