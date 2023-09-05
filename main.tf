@@ -6,7 +6,7 @@ locals {
   access_key                   = var.observe_token
   create_s3_bucket             = var.s3_delivery_bucket == null
   s3_bucket_arn                = local.create_s3_bucket ? aws_s3_bucket.bucket[0].arn : var.s3_delivery_bucket.arn
-  observe_url                  = var.observe_url != "" ? var.observe_url : format("https://%s.collect.%s/v1/kinesis", var.observe_customer, var.observe_domain)
+  observe_url                  = coalesce(var.observe_url, try("${var.observe_collection_endpoint}/v1/kinesis", ""), try("https://${var.observe_customer}.collect.${var.observe_domain}/v1/kinesis", ""), "missing")
 }
 
 resource "random_string" "bucket_suffix" {

@@ -3,9 +3,20 @@ variable "name" {
   type        = string
 }
 
-variable "observe_customer" {
-  description = "Observe Customer ID"
+variable "observe_collection_endpoint" {
+  description = "Observe Collection Endpoint, e.g https://123456789012.collect.observeinc.com"
   type        = string
+  default     = null
+  validation {
+    condition     = var.observe_collection_endpoint == null || can(regex("^https://.*$", var.observe_collection_endpoint))
+    error_message = "Endpoint must be a valid HTTPS URL."
+  }
+}
+
+variable "observe_customer" {
+  description = "Observe Customer ID. Deprecated, please use observe_collection_endpoint instead"
+  type        = string
+  default     = null
 }
 
 variable "observe_token" {
@@ -19,7 +30,7 @@ variable "observe_token" {
 }
 
 variable "observe_domain" {
-  description = "Observe domain"
+  description = "Observe domain. Deprecated, please use observe_collection_endpoint instead"
   type        = string
   nullable    = false
   default     = "observeinc.com"
