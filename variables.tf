@@ -94,20 +94,6 @@ variable "http_endpoint_content_encoding" {
   default     = "GZIP"
 }
 
-variable "s3_delivery_buffer_interval" {
-  description = "Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination."
-  type        = number
-  nullable    = false
-  default     = 300
-}
-
-variable "s3_delivery_buffer_size" {
-  description = "Buffer incoming data to the specified size, in MiBs, before delivering it to the destination."
-  type        = number
-  nullable    = false
-  default     = 5
-}
-
 variable "s3_delivery_compression_format" {
   description = "The compression format. If no value is specified, the default is UNCOMPRESSED."
   type        = string
