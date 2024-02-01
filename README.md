@@ -121,15 +121,15 @@ This repository contains examples of how to solve for concrete usecases:
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.75, <5.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.1.9 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.75, <5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.0.0 |
 
 ## Modules
@@ -178,8 +178,6 @@ No modules.
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe Token | `string` | n/a | yes |
 | <a name="input_observe_url"></a> [observe\_url](#input\_observe\_url) | Observe URL. Deprecated. | `string` | `""` | no |
 | <a name="input_s3_delivery_bucket"></a> [s3\_delivery\_bucket](#input\_s3\_delivery\_bucket) | S3 bucket to be used as backup for message delivery | <pre>object({<br>    arn = string<br>  })</pre> | `null` | no |
-| <a name="input_s3_delivery_buffer_interval"></a> [s3\_delivery\_buffer\_interval](#input\_s3\_delivery\_buffer\_interval) | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `300` | no |
-| <a name="input_s3_delivery_buffer_size"></a> [s3\_delivery\_buffer\_size](#input\_s3\_delivery\_buffer\_size) | Buffer incoming data to the specified size, in MiBs, before delivering it to the destination. | `number` | `5` | no |
 | <a name="input_s3_delivery_cloudwatch_log_stream_name"></a> [s3\_delivery\_cloudwatch\_log\_stream\_name](#input\_s3\_delivery\_cloudwatch\_log\_stream\_name) | Log stream name for S3 delivery logs. If empty, log stream will be disabled | `string` | `"S3Delivery"` | no |
 | <a name="input_s3_delivery_compression_format"></a> [s3\_delivery\_compression\_format](#input\_s3\_delivery\_compression\_format) | The compression format. If no value is specified, the default is UNCOMPRESSED. | `string` | `"UNCOMPRESSED"` | no |
 | <a name="input_s3_delivery_prefix"></a> [s3\_delivery\_prefix](#input\_s3\_delivery\_prefix) | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files | `string` | `null` | no |

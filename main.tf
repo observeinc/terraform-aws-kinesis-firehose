@@ -43,23 +43,6 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
   name        = var.name
   destination = "http_endpoint"
 
-  s3_configuration {
-    role_arn   = aws_iam_role.firehose.arn
-    bucket_arn = local.s3_bucket_arn
-
-    buffer_size        = var.s3_delivery_buffer_size
-    buffer_interval    = var.s3_delivery_buffer_interval
-    compression_format = var.s3_delivery_compression_format
-    prefix             = var.s3_delivery_prefix
-    # kms_key_arn
-
-    cloudwatch_logging_options {
-      enabled         = local.enable_s3_logging
-      log_group_name  = local.enable_s3_logging ? var.cloudwatch_log_group.name : ""
-      log_stream_name = local.enable_s3_logging ? var.s3_delivery_cloudwatch_log_stream_name : ""
-    }
-  }
-
   dynamic "kinesis_source_configuration" {
     for_each = local.enable_kinesis_source ? [1] : []
     content {
@@ -87,6 +70,20 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
           name  = common_attributes.key
           value = common_attributes.value
         }
+      }
+    }
+
+    s3_configuration {
+      role_arn   = aws_iam_role.firehose.arn
+      bucket_arn = local.s3_bucket_arn
+
+      compression_format = var.s3_delivery_compression_format
+      prefix             = var.s3_delivery_prefix
+
+      cloudwatch_logging_options {
+        enabled         = local.enable_s3_logging
+        log_group_name  = local.enable_s3_logging ? var.cloudwatch_log_group.name : ""
+        log_stream_name = local.enable_s3_logging ? var.s3_delivery_cloudwatch_log_stream_name : ""
       }
     }
 

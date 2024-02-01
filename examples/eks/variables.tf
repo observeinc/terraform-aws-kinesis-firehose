@@ -1,15 +1,14 @@
 variable "cluster_name" {
   description = "EKS Cluster Name"
   type        = string
-  nullable    = false
-  default     = "observe-eks-demo"
+  default     = null
 }
 
 variable "cluster_version" {
   description = "EKS Cluster Version"
   type        = string
   nullable    = false
-  default     = "1.21"
+  default     = "1.27"
 }
 
 variable "observe_collection_endpoint" {
