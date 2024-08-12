@@ -41,6 +41,18 @@ variable "exclude_filters" {
   default     = []
 }
 
+variable "statistics_configurations" {
+  description = "A list of additional statistics configurations to include."
+  type = list(object({
+    additional_statistics = list(string)
+    include_metrics = list(object({
+      namespace   = string
+      metric_name = string
+    }))
+  }))
+  default = null
+}
+
 variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)
