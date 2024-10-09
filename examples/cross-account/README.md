@@ -89,6 +89,7 @@ Note that this will create AWS resources - once you are done, run `terraform des
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_external_ids"></a> [external\_ids](#input\_external\_ids) | External ID array | `list(string)` | `null` | no |
+| <a name="input_http_endpoint_s3_backup_mode"></a> [http\_endpoint\_s3\_backup\_mode](#input\_http\_endpoint\_s3\_backup\_mode) | S3 backup mode for Kinesis Firehose HTTP endpoint. By default, only data that cannot be delivered to Observe via HTTP is written to S3. To backup all data to S3, set this to `AllData`. | `string` | `"FailedDataOnly"` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name for firehose and matching IAM role | `string` | n/a | yes |
 | <a name="input_observe_collection_endpoint"></a> [observe\_collection\_endpoint](#input\_observe\_collection\_endpoint) | Observe Collection Endpoint, e.g https://123456789012.collect.observeinc.com | `string` | n/a | yes |
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe token | `string` | n/a | yes |

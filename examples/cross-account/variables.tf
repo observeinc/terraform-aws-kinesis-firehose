@@ -13,6 +13,13 @@ variable "name" {
   description = "Name for firehose and matching IAM role"
 }
 
+variable "http_endpoint_s3_backup_mode" {
+  type        = string
+  description = "S3 backup mode for Kinesis Firehose HTTP endpoint. By default, only data that cannot be delivered to Observe via HTTP is written to S3. To backup all data to S3, set this to `AllData`."
+  nullable    = false
+  default     = "FailedDataOnly"
+}
+
 variable "user_arn" {
   type        = string
   description = "ARN for external user granted access to assume role"
