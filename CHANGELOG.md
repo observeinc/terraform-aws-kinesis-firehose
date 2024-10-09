@@ -1,9 +1,9 @@
-# [2.2.0](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.1.0...v2.2.0) (2024-02-01)
+# [2.3.0](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.2.0...v2.3.0) (2024-10-09)
 
 
 ### Features
 
-* bump AWS provider to 5.0 ([#55](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/55)) ([534722e](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/534722ef46a08cdca7d4388c4c035170cdfaed13))
+* add  http_endpoint_s3_backup_mode var to cross-account ([#58](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/58)) ([689cb59](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/689cb59923c8cf186e745fdd2d74b7cacbb1176f))
 
 
 
