@@ -20,6 +20,13 @@ variable "http_endpoint_s3_backup_mode" {
   default     = "FailedDataOnly"
 }
 
+variable "s3_delivery_compression_format" {
+  description = "The compression format. If no value is specified, the default is UNCOMPRESSED."
+  type        = string
+  nullable    = false
+  default     = "UNCOMPRESSED"
+}
+
 variable "user_arn" {
   type        = string
   description = "ARN for external user granted access to assume role"
