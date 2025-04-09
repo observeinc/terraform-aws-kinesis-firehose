@@ -27,6 +27,13 @@ variable "s3_delivery_compression_format" {
   default     = "UNCOMPRESSED"
 }
 
+variable "s3_delivery_data_retention" {
+  description = "Days to retain files in S3."
+  type        = number
+  nullable    = false
+  default     = 30
+}
+
 variable "user_arn" {
   type        = string
   description = "ARN for external user granted access to assume role"

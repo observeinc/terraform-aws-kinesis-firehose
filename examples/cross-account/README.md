@@ -94,6 +94,7 @@ Note that this will create AWS resources - once you are done, run `terraform des
 | <a name="input_observe_collection_endpoint"></a> [observe\_collection\_endpoint](#input\_observe\_collection\_endpoint) | Observe Collection Endpoint, e.g https://123456789012.collect.observeinc.com | `string` | n/a | yes |
 | <a name="input_observe_token"></a> [observe\_token](#input\_observe\_token) | Observe token | `string` | n/a | yes |
 | <a name="input_s3_delivery_compression_format"></a> [s3\_delivery\_compression\_format](#input\_s3\_delivery\_compression\_format) | The compression format. If no value is specified, the default is UNCOMPRESSED. | `string` | `"UNCOMPRESSED"` | no |
+| <a name="input_s3_delivery_data_retention"></a> [s3\_delivery\_data\_retention](#input\_s3\_delivery\_data\_retention) | Days to retain files in S3. | `number` | `30` | no |
 | <a name="input_user_arn"></a> [user\_arn](#input\_user\_arn) | ARN for external user granted access to assume role | `string` | n/a | yes |
 
 ## Outputs

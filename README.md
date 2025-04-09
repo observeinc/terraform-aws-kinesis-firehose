@@ -153,6 +153,7 @@ No modules.
 | [aws_kinesis_firehose_delivery_stream.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_firehose_delivery_stream) | resource |
 | [aws_s3_bucket.bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_lifecycle_configuration.retention](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_lifecycle_configuration) | resource |
 | [aws_s3_bucket_ownership_controls.bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_ownership_controls) | resource |
 | [random_string.bucket_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
@@ -180,6 +181,7 @@ No modules.
 | <a name="input_s3_delivery_bucket"></a> [s3\_delivery\_bucket](#input\_s3\_delivery\_bucket) | S3 bucket to be used as backup for message delivery | <pre>object({<br>    arn = string<br>  })</pre> | `null` | no |
 | <a name="input_s3_delivery_cloudwatch_log_stream_name"></a> [s3\_delivery\_cloudwatch\_log\_stream\_name](#input\_s3\_delivery\_cloudwatch\_log\_stream\_name) | Log stream name for S3 delivery logs. If empty, log stream will be disabled | `string` | `"S3Delivery"` | no |
 | <a name="input_s3_delivery_compression_format"></a> [s3\_delivery\_compression\_format](#input\_s3\_delivery\_compression\_format) | The compression format. If no value is specified, the default is UNCOMPRESSED. | `string` | `"UNCOMPRESSED"` | no |
+| <a name="input_s3_delivery_data_retention"></a> [s3\_delivery\_data\_retention](#input\_s3\_delivery\_data\_retention) | Days to retain files in S3 | `number` | `30` | no |
 | <a name="input_s3_delivery_prefix"></a> [s3\_delivery\_prefix](#input\_s3\_delivery\_prefix) | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 
