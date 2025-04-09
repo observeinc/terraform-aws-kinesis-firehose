@@ -101,6 +101,13 @@ variable "s3_delivery_compression_format" {
   default     = "UNCOMPRESSED"
 }
 
+variable "s3_delivery_data_retention" {
+  description = "Days to retain files in S3"
+  type        = number
+  nullable    = false
+  default     = 30
+}
+
 variable "s3_delivery_prefix" {
   description = "The \"YYYY/MM/DD/HH\" time format prefix is automatically used for delivered Amazon S3 files"
   type        = string

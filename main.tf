@@ -6,6 +6,7 @@ locals {
   access_key                   = var.observe_token
   create_s3_bucket             = var.s3_delivery_bucket == null
   s3_bucket_arn                = local.create_s3_bucket ? aws_s3_bucket.bucket[0].arn : var.s3_delivery_bucket.arn
+  s3_bucked_data_retention     = var.s3_delivery_data_retention
   observe_url                  = coalesce(var.observe_url, try("${var.observe_collection_endpoint}/v1/kinesis", ""), try("https://${var.observe_customer}.collect.${var.observe_domain}/v1/kinesis", ""), "missing")
 }
 
@@ -37,6 +38,23 @@ resource "aws_s3_bucket_acl" "bucket" {
   bucket     = aws_s3_bucket.bucket[0].id
   acl        = "private"
   depends_on = [aws_s3_bucket_ownership_controls.bucket]
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "retention" {
+  count = local.create_s3_bucket ? 1 : 0
+
+  bucket = aws_s3_bucket.bucket[0].id
+
+  rule {
+    id     = "retention"
+    status = "Enabled"
+    expiration {
+      days = local.s3_bucked_data_retention
+    }
+    noncurrent_version_expiration {
+      noncurrent_days = 1
+    }
+  }
 }
 
 resource "aws_kinesis_firehose_delivery_stream" "this" {

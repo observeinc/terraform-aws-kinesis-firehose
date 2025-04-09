@@ -18,6 +18,7 @@ module "observe_kinesis_firehose" {
 
   http_endpoint_s3_backup_mode   = var.http_endpoint_s3_backup_mode
   s3_delivery_compression_format = var.s3_delivery_compression_format
+  s3_delivery_data_retention     = var.s3_delivery_data_retention
 }
 
 resource "aws_iam_role" "this" {
