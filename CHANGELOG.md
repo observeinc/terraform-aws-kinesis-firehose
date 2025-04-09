@@ -1,9 +1,14 @@
-# [2.3.0](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.2.0...v2.3.0) (2024-10-09)
+# [2.4.0](https://github.com/observeinc/terraform-aws-kinesis-firehose/compare/v2.3.0...v2.4.0) (2025-04-09)
+
+
+### Bug Fixes
+
+* add compression var for cross account firehose ([#59](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/59)) ([2a1ce23](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/2a1ce236d73a7ad83a1fce976fbf4c1b49af9ae2))
 
 
 ### Features
 
-* add  http_endpoint_s3_backup_mode var to cross-account ([#58](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/58)) ([689cb59](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/689cb59923c8cf186e745fdd2d74b7cacbb1176f))
+* Add Lifecycle rule for retention to S3 bucket ([#60](https://github.com/observeinc/terraform-aws-kinesis-firehose/issues/60)) ([f1cfdd0](https://github.com/observeinc/terraform-aws-kinesis-firehose/commit/f1cfdd06bb992d4b2ee03ba9cdf626a93e6a802d))
 
 
 
