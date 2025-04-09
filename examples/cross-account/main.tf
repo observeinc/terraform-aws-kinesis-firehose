@@ -16,7 +16,8 @@ module "observe_kinesis_firehose" {
   name                 = var.name
   cloudwatch_log_group = aws_cloudwatch_log_group.group
 
-  http_endpoint_s3_backup_mode = var.http_endpoint_s3_backup_mode
+  http_endpoint_s3_backup_mode   = var.http_endpoint_s3_backup_mode
+  s3_delivery_compression_format = var.s3_delivery_compression_format
 }
 
 resource "aws_iam_role" "this" {
