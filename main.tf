@@ -48,6 +48,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "retention" {
   rule {
     id     = "retention"
     status = "Enabled"
+    filter {}
     expiration {
       days = local.s3_bucked_data_retention
     }
